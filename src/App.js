@@ -88,6 +88,7 @@ function Description(props) {
 
 // Login screen on the right side of the page
 function Login(props) {
+  const authLoginUrl = window.authLoginUrl;
   return (
           <Grid item xs={12} sm={8} md={5} component={Paper} elevation={1} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }} square>
             <Box
@@ -108,23 +109,25 @@ function Login(props) {
               <Box sx={{ mt: 1 }}>
                   Physical Sciences Division Users
                   <Grid item xs>
-                  <Button
-                    type="submit"
-                    fullWidth
-                    variant="contained"
-                    sx={{ mt: 1, mb: 2 }}
-                  >
-                    Log in with cnetid
-                  </Button>
+                    <Button
+                      component="a"
+                      href={authLoginUrl}
+                      fullWidth
+                      variant="contained"
+                      sx={{ mt: 1, mb: 2 }}
+                     >
+                       Log in with cnetid
+                     </Button>
                   </Grid>
                   External Users
                   <Grid item xs>
-                  <Button
-                    type="submit"
-                    fullWidth
-                    variant="contained"
-                    sx={{ mt: 1, mb: 2 }}
-                  >
+                    <Button
+                      component="a"
+                      href={authLoginUrl}
+                      fullWidth
+                      variant="contained"
+                      sx={{ mt: 1, mb: 2 }}
+                    >
                     Log in / Sign Up via Globus
                   </Button>
                   </Grid>

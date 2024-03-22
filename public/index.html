@@ -29,5 +29,11 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+    <!--
+      Include some needed variables from Jupyter
+    -->
+    <script>
+        window.authLoginUrl = "{{ authenticator_login_url }}";
+    </script>
   </body>
 </html>
