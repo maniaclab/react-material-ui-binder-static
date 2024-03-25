@@ -9,10 +9,33 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
-import binderImage from './img/binder.png';
-import efiImage from './img/efi_sig.png';
 
 // The following defines 3 major areas of the page: Header (top bar), MainContent (two slabs in the middle), and Footer (bottom bar)
+
+const binderImage = 'https://raw.githubusercontent.com/maniaclab/react-material-ui-binder-static-dist/master/static/binder.png';
+const efiImage = 'https://raw.githubusercontent.com/maniaclab/react-material-ui-binder-static-dist/master/static/efi_sig.png';
+
+/* 
+function injectKcIdpHint(hint, redirect) {
+  try {
+    console.log('Trying to inject KC IDP hint into redirect:', redirect);
+
+    // get the search params
+    const innerParams = new URLSearchParams(redirect.split('?')[1]);
+    console.log('inner params:', innerParams);
+
+    // inject kc_idp_hint='uchicago-okta' into the inner params
+    innerParams.set('kc_idp_hint', hint);
+
+    // rebuild the original URL with the injected params
+    const modifiedRedirect = redirect.split('?')[0] + '?' + innerParams.toString();
+    return modifiedRedirect
+  } catch (error) {
+    console.log("Error: ", error)
+    return redirect
+  }
+}
+*/
 
 function Header(props) {
   return (  
@@ -88,7 +111,20 @@ function Description(props) {
 
 // Login screen on the right side of the page
 function Login(props) {
-  const authLoginUrl = window.authLoginUrl;
+  var authLoginUrl = window.authLoginUrl;
+  if (authLoginUrl == "{{ authenticator_login_url }}") {  
+    var authLoginUrl = 'http://localhost:3000/';
+    var authLoginUrlUC = authLoginUrl;
+    var authLoginUrlGlobus = authLoginUrl;
+  } else {
+    var authLoginUrlUC = injectKcIdpHint('uchicago-oidc', authLoginUrl);
+    var authLoginUrlGlobus = injectKcIdpHint('globus', authLoginUrl);
+  }
+  /*
+  console.log("Auth url:", authLoginUrl);
+  console.log("Auth url (UC):", authLoginUrlUC);
+  console.log("Auth url (Globus):", authLoginUrlUC);
+  */
   return (
           <Grid item xs={12} sm={8} md={5} component={Paper} elevation={1} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }} square>
             <Box
@@ -111,25 +147,13 @@ function Login(props) {
                   <Grid item xs>
                     <Button
                       component="a"
-                      href={authLoginUrl}
+                      href={authLoginUrlUC}
                       fullWidth
                       variant="contained"
                       sx={{ mt: 1, mb: 2 }}
                      >
                        Log in with cnetid
                      </Button>
-                  </Grid>
-                  External Users
-                  <Grid item xs>
-                    <Button
-                      component="a"
-                      href={authLoginUrl}
-                      fullWidth
-                      variant="contained"
-                      sx={{ mt: 1, mb: 2 }}
-                    >
-                    Log in / Sign Up via Globus
-                  </Button>
                   </Grid>
                 <Grid container>
                   <Grid item xs>
