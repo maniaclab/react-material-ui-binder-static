@@ -19,9 +19,9 @@
       visible to React
     -->
     <script>
-        window.authLoginUrlHint = "{{ authenticator_login_url }}&kc_idp_hint=uchicago-okta";
+        window.authLoginUrlHint = "{{ authenticator_login_url }}";
         window.authLoginUrl = "{{ authenticator_login_url }}";
     </script>
-    <script defer="defer" src="bundle.js"></script>
+    <script defer="defer" src="{{ static_url("js/bundle.js") }}"></script>
   </body>
 </html>
