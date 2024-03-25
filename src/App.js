@@ -15,7 +15,7 @@ import Typography from '@mui/material/Typography';
 const binderImage = 'https://raw.githubusercontent.com/maniaclab/react-material-ui-binder-static-dist/master/static/binder.png';
 const efiImage = 'https://raw.githubusercontent.com/maniaclab/react-material-ui-binder-static-dist/master/static/efi_sig.png';
 
-/* 
+
 function injectKcIdpHint(hint, redirect) {
   try {
     console.log('Trying to inject KC IDP hint into redirect:', redirect);
@@ -35,7 +35,7 @@ function injectKcIdpHint(hint, redirect) {
     return redirect
   }
 }
-*/
+
 
 function Header(props) {
   return (  
