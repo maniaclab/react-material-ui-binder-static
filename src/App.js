@@ -18,13 +18,10 @@ const efiImage = 'https://raw.githubusercontent.com/maniaclab/react-material-ui-
 
 function injectKcIdpHint(hint, redirect) {
   try {
-    console.log('Trying to inject KC IDP hint into redirect:', redirect);
-
     // get the search params
     const innerParams = new URLSearchParams(redirect.split('?')[1]);
-    console.log('inner params:', innerParams);
 
-    // inject kc_idp_hint='uchicago-okta' into the inner params
+    // inject e.g. kc_idp_hint='uchicago-okta' into the inner params
     innerParams.set('kc_idp_hint', hint);
 
     // rebuild the original URL with the injected params
