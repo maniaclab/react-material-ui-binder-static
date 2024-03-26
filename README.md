@@ -1,7 +1,5 @@
 # BinderHub Static Login Page with React
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
 ## Available Scripts
 
 In the project directory, you can run:
@@ -17,7 +15,6 @@ You may also see any lint errors in the console.
 ### `npm run build`
 
 Builds the app for production to the `dist` folder.\
-
 The build is minified and packed via `webpack`. 
 
 ## Using with BinderHub
@@ -73,3 +70,6 @@ page into your BinderHub deployment:
           mountPath: /usr/local/share/jupyterhub/static/js/bundle.js
           subPath: bundle.js
 ```
+
+## Misc
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
